@@ -2,11 +2,15 @@ const express = require('express');
 const itemService = require('../../services/itemService');
 const basketService = require('../../services/basketService');
 const userService = require('../../services/userService');
+const orderService = require('../../services/orderService');
 
 module.exports = (config) => {
   const router = express.Router();
   const log = config.logger;
+
   const basket = basketService(config.redis.client);
+  const order = orderService(config.mysql.client);
+  
   router.get('/', async (req, res) => {
     const basketItems = await basket.getAll(res.locals.currentUser.id);
     let items = [];
@@ -47,10 +51,7 @@ module.exports = (config) => {
     return res.redirect('/basket');
   });
 
-  router.get('/buy', async (req, res, next) => {
-    return next('Not implemented');
-
-    /*
+  router.get('/buy', async (req, res) => {
     try {
       const userId = res.locals.currentUser.id;
       const user = res.locals.currentUser;
@@ -95,7 +96,6 @@ module.exports = (config) => {
       log.fatal(err);
       return res.redirect('/basket');
     }
-    */
   });
 
   return router;
