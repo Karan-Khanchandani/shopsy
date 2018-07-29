@@ -4,21 +4,23 @@
   "private": true,
   "author": "Daniel Khan <daniel@khan.io>",
   "scripts": {
-    "start": "node ./server/bin/www | ./node_modules/bunyan/bin/bunyan"
+    "start": "node ./server/bin/www | ./node_modules/.bin/bunyan",
+    "blogger": "./node_modules/.bin/bunyan"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
-    "body-parser": "~1.17.1",
+    "body-parser": "^1.18.3",
     "bunyan": "^1.8.12",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "express": "~4.15.2",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "pug": "~2.0.0-beta11"
+    "mongoose": "^5.2.5",
+    "pug": "^2.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb-base": "^12.0.1",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.13.0"
   }
 }
