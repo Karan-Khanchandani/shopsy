@@ -22,7 +22,7 @@ async function add(itemId, userId) {
 //  getAll
 async function getAll(userId) {
   return new Promise((resolve, reject) => {
-    client.hget(`basket:${userId}`, (err, res) => {
+    client.hgetall(`basket:${userId}`, (err, res) => {
       if (err) return reject(err);
       return resolve(res);
     });
